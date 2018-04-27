@@ -82,6 +82,9 @@ a {
 
 .header {
   grid-row: 1 / 2;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-gap: 1rem;
   background-color: darksalmon;
 }
 
@@ -91,6 +94,20 @@ a {
   color: #00b0ff;
   text-shadow: 2px 1px #cccccc;
   text-decoration: none;
+  grid-column: 1/2
+}
+
+.login {
+  grid-column: 3/4;
+  align-self: center;
+}
+
+.logout {
+  grid-column: 3 / 4;
+}
+
+.username {
+  grid-column: 2 / 3;
 }
 
 /*******************/
