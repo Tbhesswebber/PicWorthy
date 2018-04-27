@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
-import NavbarComp from './components/navbar.jsx';
 import { Navbar } from 'react-bootstrap';
 import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
-import Login from './components/login.jsx';
-import Signup from './components/signup.jsx';
-import Landing from './components/landing.jsx'
-import Locations from './components/locations.jsx';
-import Upload from './components/upload.jsx';
+
+import Header from './components/header.jsx';
+import Body from './components/body.jsx';
 import Footer from './components/footer.jsx';
 
 
-export default class App extends Component {
+class App extends Component {
 
   constructor(props) {
     super(props);
     
     this.state = {
-      userPromise: axios.get('/api/user'),
+      // userPromise: axios.get('/api/user'),
       
       userData: {
         firstName: '',
@@ -40,40 +37,17 @@ export default class App extends Component {
       detailProps: undefined,
       lastCardClicked: undefined
     }
-
-    this.navbarHandleClose = this.navbarHandleClose.bind(this);
-    this.navbarHandleShow = this.navbarHandleShow.bind(this);
-    this.navbarHandleShowSignup = this.navbarHandleShowSignup.bind(this);
-    this.navbarHandleShowLogin = this.navbarHandleShowLogin.bind(this);
-
-    axios.get('/api/user')
-      .then((result) => 
-        this.setState({userData: result.data}));
-  }
-  
-  navbarHandleClose() {
-    this.setState({ 
-      showLogin: false,
-      showSignup: false
-    });
   }
 
-  navbarHandleShow(e) {
-    this.setState({ [e.target.name]: true });
-  }
-
-  navbarHandleShowSignup() {
-    this.setState({ 
-      showSignup : true,
-      showLogin: false
-    });
-  }
-
-  navbarHandleShowLogin() {
-    this.setState({ 
-      showSignup : false,
-      showLogin: true
-    });
+  handleNavModals(e, signup = this.state.showSignup, login = this.state.showLogin) {
+    const status = {};
+    if (e) {
+      status[e.target.name] = true
+    } else {
+      status.showSignup = signup;
+      status.showLogin = login;
+    }
+    this.setState(status);
   }
 
   render() {
@@ -81,53 +55,16 @@ export default class App extends Component {
     const userData = this.state.userData;
 
     return (
-    
-      <div style={{backgroundColor: "#fdfdfd"}}>
-
-        <NavbarComp 
-          userData={userData}
-          showLogin={this.state.showLogin}
-          showSignup={this.state.showSignup}
-          activeModal={this.state.activeModal}
-          handleClose={this.navbarHandleClose}
-          handleShow={this.navbarHandleShow}
-          handleShowSignup={this.navbarHandleShowSignup}
-          handleShowLogin={this.navbarHandleShowLogin}
+      <div className="main fullh fullw">
+        <Header
+          userData={this.state.userData}
+          handleModals={this.handleNavModals.bind(this)}
         />
-            
-        <Switch>
-          <Route
-            exact path='/'
-            component={ Landing }
-          />
-          
-          <Route 
-            path='/upload' 
-            render={(props) => 
-              <Upload 
-                userData={ userData }
-                userPromise={ userPromise }
-              />
-            }
-          />
-
-          <Route 
-            path='/' 
-            render={(props) => {
-              return (
-                <Locations 
-                  userPromise={ userPromise }
-                  userData={ userData }
-                  pathname={ props.location.pathname }
-                />
-              )
-            }
-          } 
-          />
-        </Switch>
+        <Body />
         <Footer />
       </div>
     );
   }
 };
 
+export default App;
