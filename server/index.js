@@ -20,8 +20,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(loggedOutRedirect);
 
-const reactApp = express.static(`${__dirname}/../client/dist`);
-reactRoutes.forEach((r) => app.use(r, reactApp));
+// const reactApp = express.static(`${__dirname}/../client/dist`);
+// reactRoutes.forEach((r) => app.use(r, reactApp));
+app.get('*',  express.static(`${__dirname}/../client/dist`))
 
 app.use('/', router);
 
