@@ -15,6 +15,14 @@ class Landing extends Component {
   }
 
   componentDidMount () {
+    this.startInterval();
+  }
+
+  componentDidUpdate () {
+    this.startInterval();
+  }
+
+  startInterval () {
     this.changePhoto = setInterval(() => {
       this.advanceImage(this.state.images);
     }, 7000);
@@ -25,11 +33,13 @@ class Landing extends Component {
   }
   
   advanceImage (images) {
+    clearInterval(this.changePhoto);
     let reorderedImages = images.concat(images.splice(0, 1));
     this.setState({images: reorderedImages});
   }
 
   retreatImage (images) {
+    clearInterval(this.changePhoto);
     let reorderedImages = images.splice(-1, 1).concat(images);
     this.setState({images: reorderedImages});
   }
@@ -37,15 +47,21 @@ class Landing extends Component {
   render() {
     return (
       <div className="landing fullh fullw">
-        <div className="landing-left chevron fullh fullw">
-            <FaChevronLeft className="left-chevron" onClick={() => this.advanceImage(this.state.images)} />
-        </div>
+        <a className="landing-left chevron chevron-left fullh fullw">
+            <FaChevronLeft
+              className="left-chevron"
+              onClick={() => this.advanceImage(this.state.images)}              
+            />
+        </a>
         <div className="landing-frame">
           <img className="landing-image" src={this.state.images[0]} />
         </div>
-        <div className="landing-right chevron fullh fullw">
-            <FaChevronRight className="right-chevron" onClick={() => this.retreatImage(this.state.images)} />
-        </div>
+        <a className="landing-right chevron chevron-right fullh fullw">
+            <FaChevronRight
+              className="right-chevron"
+              onClick={() => this.retreatImage(this.state.images)}
+            />
+        </a>
       </div>
     );
   }

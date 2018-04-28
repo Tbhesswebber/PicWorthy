@@ -1,14 +1,14 @@
 /*******************/
 /***   Setup     ***/
 /*******************/
-/*
+/* 
 Color Scheme
 #5c9ead
 #594157
 #326273
 #a0d2db
-#bee7e8
-*/
+#bee7e8 */
+
 
 
 * {
@@ -19,7 +19,7 @@ Color Scheme
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font-family: 'Shadows Into Light', cursive;
+  font-family: 'Poiret One', cursive;
   
 }
 
@@ -41,6 +41,27 @@ body {
 
 a {
   text-decoration: none;
+}
+
+input {
+  background: #ccc;
+  border-radius: 5px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #222;
+  opacity: 1;
+  font-size: 1rem; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #222;
+}
+
+button {
+  border-radius: 5px;
+  background: #ccc;
+  font-size: .9rem;
 }
 
 .go {
@@ -166,11 +187,14 @@ a {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  background: #eee;
+  background: #999;
+  color: #222;
+  /* background: #594157;
+  color: #bee7e8; */
   border-radius: 5px;
   display: grid;
   grid-template-columns: 1rem auto 1rem;
-  grid-template-rows: 1rem fit-content(0) 1rem auto 1rem; 
+  grid-template-rows: 1rem fit-content(0) 1rem auto 1rem;
 }
 
 .modal-header {
@@ -194,13 +218,14 @@ a {
   grid-row: 1 / 2;
   display: grid;
   grid-template-columns: [col1-start] 1fs [col1-end];
-  grid-gap: 10px;
+  grid-gap: .75rem;
+  font-size: 1.25rem;
 }
 
 .modal-body div {
   grid-column: col1-start / col1-end;
   display: grid;
-  height: 1rem;
+  /* height: 1rem; */
   grid-gap: 10px;
   grid-template-columns: auto fit-content(0);
 }
@@ -210,7 +235,7 @@ a {
 }
 
 .modal-body div input {
-  max-height: 1.25rem;
+  max-height: 1.5rem;
   grid-column: 2 / 3;
 }
 
@@ -222,6 +247,7 @@ a {
 
 .modal-footer a {
   grid-column: 1 / 2;
+  font-size: .75rem;
 }
 
 .modal-footer button {
@@ -231,7 +257,8 @@ a {
 .modal-close {
   grid-column: 2 / 3;
   align-self: flex-end;
-  color: #999;
+  /* color: #999; */
+  color: #594157
 }
 
 /*******************/
@@ -277,6 +304,14 @@ a {
   color: #ffffff70;
   display: grid;
   grid-template-rows: auto fit-content(0) auto;
+}
+
+.chevron-right:hover {
+  background: linear-gradient(90deg, #00000000, #00000090);
+}
+
+.chevron-left:hover {
+  background: linear-gradient(90deg, #00000090, #00000000);
 }
 
 .right-chevron, .left-chevron {
