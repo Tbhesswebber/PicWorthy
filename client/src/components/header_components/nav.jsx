@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import FaIconPack, {FaStar, FaHome, FaPlus} from 'react-icons/lib/fa';
+import {FaStar, FaHome, FaPlus} from 'react-icons/lib/fa';
 
-
-import Login from './login.jsx';
-import Signup from './signup.jsx';
+import Modal from '../helper_components/modal.jsx';
 
 const NavRightUser = (props) => {
   return (
@@ -31,13 +29,10 @@ const NavRightUser = (props) => {
 const NavRightNoUser = (props) => {
   return (
     <div className="login">
-      <a>Login</a>
-      <Login 
-        handleModals={ props.handleModals }
-      />
-      
-      <Signup 
-        handleModals={ props.handleModals }
+      <a onClick={e => props.handleModals(e)}>Login</a>
+      <Modal 
+        handleModals={props.handleModals}
+        modalData={props.modalData}
       />
     </div>
   )

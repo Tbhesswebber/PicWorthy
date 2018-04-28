@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import PasswordMask from 'react-password-mask'; // go to https://www.npmjs.com/package/react-password-mask for styling
-import { Modal } from 'react-bootstrap';
 
 export default class Login extends Component {
   constructor(props) {
@@ -41,51 +39,37 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
-        
-        <Modal show={this.props.show} onHide={() => {this.props.hide()}} bsSize="small">
-          
-          <Modal.Header closeButton>
-            <Modal.Title>Login</Modal.Title>
-          </Modal.Header>
-          
-          <Modal.Body>
-              Username: 
-              <div>
-                <input type="text" placeholder="Enter username" name="username" onChange={this.updateInfo} />
-                <br/>
-              </div>
-              <br />
-          
-              Password:  <PasswordMask
-                          id="loginPassword"
-                          name="password"
-                          placeholder="Enter password"
-                          value={this.state.password}
-                          onChange={this.updateInfo}
-                          useVendorStyles={false}
-                        />
-          
-              <span style={{color: "red"}}>
-                {this.state.failedLogin}
-              </span>
-          </Modal.Body>
-          
-          <Modal.Footer>
-            <a style={{float:`left`}} onClick={() => {this.props.handleShowSignup()}}>Need an account?</a>
-            <button 
-              onClick={this.sendLogin} 
-              style={{borderRadius: `5px`, padding: `5px`}}> 
-                Login 
-              </button>
-          </Modal.Footer>
-        </Modal>
+      <div className="modal-content">
+        <div className="modal-body">
+          <div className="modal-username">
+            <label htmlFor="username">Username:</label> 
+            <input
+              type="text"
+              placeholder="Enter username"
+              name="username"
+              onChange={this.updateInfo}
+            />
+          </div>
+          <div className="modal-password">
+            <label htmlFor="password">Password:</label>  
+            <input 
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter password"
+              value={this.state.password}
+              onChange={this.updateInfo}
+            />
+          </div>
+        </div>       
+        <div className="modal-footer">
+          <span style={{color: "red"}}>
+            {this.state.failedLogin}
+          </span>
+          <a onClick={() => {this.props.handleShowSignup()}}>Need an account?</a>
+          <button type="button" onClick={this.sendLogin} >Login</button>
+        </div>
       </div>
     );
   }
 };
-
-const containerStyles ={
-  display: "inline",
-  backgroundColor: "black"
-}
