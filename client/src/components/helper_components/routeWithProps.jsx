@@ -5,7 +5,8 @@ const bypassRouter = (component, ...props) => {
   return (React.createElement(component, finalProps));    
 }
 
-const RouteWithProps = ({component, ...props}) => {
+const RouteWithProps = ({ component }) => {
+  console.log(arguments);
   return (
     <Route {...props} render={routeProps => {
       return this.bypassRouter(component, routeProps, props);

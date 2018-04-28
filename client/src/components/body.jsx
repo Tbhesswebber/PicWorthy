@@ -15,7 +15,6 @@ class Body extends React.Component {
   render () {
     return (
       <div className="body fullh fullw">
-        <Landing />
         <Switch>
           <Route
             exact path='/'
@@ -25,16 +24,13 @@ class Body extends React.Component {
           <RouteWithProps
             path='/upload'
             component={Upload}
-            userData={ userData }
-            userPromise={ userPromise }
+            userData={ this.props.userData }
           />
 
           <RouteWithProps 
             path='/'
             component={Locations}
-            userPromise={ userPromise }
-            userData={ userData }
-            pathname={ props.location.pathname } 
+            userData={ this.props.userData }
           />
         </Switch>
       </div>
