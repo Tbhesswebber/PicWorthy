@@ -10,7 +10,7 @@ const Landing = () => (
       <Carousel.Item>
         
         <div style={divImgStyle1}>
-          <img style={imgStyle} src="https://images.pexels.com/photos/7653/pexels-photo.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+          <img style={imgStyle} src='https://images.pexels.com/photos/7653/pexels-photo.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' />
         </div>
         
         <Carousel.Caption>

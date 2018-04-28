@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import UploadForm from './uploadform.jsx';
-import Worthymap from './worthymap.jsx';
-import DropZone from './dropzone.jsx';
-import { Grid, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { BeatLoader } from 'react-spinners';
+
+import UploadForm from '../helper_components/uploadForm.jsx';
+import Worthymap from '../helper_components/worthyMap.jsx';
+import DropZone from '../helper_components/dropZone.jsx';
 
 export default class Upload extends Component {
   constructor(props) {

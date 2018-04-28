@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 
 ReactDOM.render((
-  <BrowserRouter>
+  <BrowserRouter className="fullh fullw">
     <App />
   </BrowserRouter>
 ), document.getElementById('app'));

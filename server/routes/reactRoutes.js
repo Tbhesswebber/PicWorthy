@@ -1,4 +1,5 @@
 
+
 /*
  * Routes must be added here so that the server 
  * serves up the REact app when these routes are visited
@@ -12,6 +13,7 @@
 
 const reactRoutes = [
   '/',
+  '/main.css',
   '/locations',
   '/upload',
   '/userpage',

@@ -1,5 +1,6 @@
 const noLoginRequired = [
   '/',
+  '/main.css',
   '/api/signup',
   '/api/login',
   '/api/user',
