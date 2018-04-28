@@ -24,10 +24,10 @@ class App extends Component {
         likes: [],
         photos: []
       },
-
-      showLogin: false,
-      showSignup: false,
-      activeModal: '',
+      modal: {
+        view: '',//passed down to modal component to indicate if a modal should be shown
+        isClosed: true
+      },
       mapCenter: {
         lat: 41.9,
         lng: -87.624
@@ -39,15 +39,10 @@ class App extends Component {
     }
   }
 
-  handleNavModals(e, signup = this.state.showSignup, login = this.state.showLogin) {
-    const status = {};
-    if (e) {
-      status[e.target.name] = true
-    } else {
-      status.showSignup = signup;
-      status.showLogin = login;
-    }
-    this.setState(status);
+  handleModals(e) {
+    e === close
+      ? this.setState({modal: {view: '', isClosed: true}})
+      : this.setState({modal: {view: e.target.text.toLowerCase(), isClosed: false}});
   }
 
   render() {
@@ -58,7 +53,8 @@ class App extends Component {
       <div className="main fullh fullw">
         <Header
           userData={this.state.userData}
-          handleModals={this.handleNavModals.bind(this)}
+          modalData={this.state.modal}
+          handleModals={this.handleModals.bind(this)}
         />
         <Body />
         <Footer />
