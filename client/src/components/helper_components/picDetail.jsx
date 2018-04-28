@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
-import FaIconPack, {FaStarO, FaStar, FaFacebookSquare, FaTwitter, FaYelp, FaInstagram} from 'react-icons/lib/fa';
+import {FaStarO, FaStar, FaFacebookSquare, FaTwitter, FaYelp, FaInstagram} from 'react-icons/lib/fa';
 
 
 const getPic = (url, pics) => {
@@ -34,26 +33,6 @@ const DisplayStar = ({ pic, handleStarClick, isStarred }) => {
 
 const checkFavorites = (userFavorites, img) => userFavorites.includes(img);
 
-const imgSpanStyle= {
-  display: `inline-block`,
-  float: `right`,
-  padding: `15px`,
-  backgroundColor: `white`,
-  borderRadius: `3px`,
-  border: `2px solid black`
-}
-
-const imgStyle = {
-  border: `1px solid black`,
-  height: `100%`,
-  width: `100%`,
-  objectFit: `contain`
-}
-
-const iconStyle ={
-  paddingRight: `10px`
-}
-
 
 export default class Details extends Component {
 
@@ -83,22 +62,7 @@ export default class Details extends Component {
 
     return (
       <div>
-        <br/>
-        
-        <Grid style={ {
-          background: `linear-gradient(to right, #4cc7ff 0%, #99dfff  100%)`, 
-          padding: `20px`, 
-          width: `100vw`
-        } }>
-        
-          <Row>
-        
-            <Col 
-              md={ 6 } 
-              mdPush={ 6 } 
-              style={ {paddingRight: `100px`} }
-            >
-        
+        <div>        
               <h1 style={ {fontFamily: `billabong`} }>
                 {pic.location }
               </h1>
@@ -110,9 +74,6 @@ export default class Details extends Component {
               <p>
                 { pic.description } 
               </p>
-        
-              <br />
-        
               <DisplayStar
                 pic={ pic }
                 handleStarClick={ handleStarClick }
@@ -136,24 +97,8 @@ export default class Details extends Component {
                 size={ 30 } 
               />
               */}
-            </Col>
-            
-            <Col 
-              md={ 6 } 
-              mdPull={ 6 }
-            >
-            
-              <span style={ imgSpanStyle }>
-            
-                <img 
-                  src={ pic.imageURL } 
-                  style ={ imgStyle }
-                />
-              </span>
-            </Col>
-          </Row>
-        </Grid>
-        <br />
+
+        </div>
         
         <div 
           ref={ (el) => this.scrollEnd = el  }

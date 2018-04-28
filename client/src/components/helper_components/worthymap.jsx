@@ -14,7 +14,7 @@ import { SearchBox } from "react-google-maps/lib/components/places/SearchBox";
   /*
    *
    *  THe worthy map uses higher order component.  It composes a bunch of functions 
-   *  and together and applies it to the google map
+   *  together and applies it to the google map
    * 
    */
 
