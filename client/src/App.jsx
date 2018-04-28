@@ -14,7 +14,7 @@ class App extends Component {
     super(props);
     
     this.state = {
-      // userPromise: axios.get('/api/user'),
+      userPromise: axios.get('/api/user'),
       
       userData: {
         firstName: '',
