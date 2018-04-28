@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import _ from 'lodash';
-
-import WorthyMap from './worthymap.jsx';
-import PicRow from './picrow.jsx';
-import Details from './details.jsx';
-import fetchClosestPics from '../helpers/fetchClosestPics.jsx';
-import getUserLocation from '../helpers/getUserLocation.jsx';
-
 
 // const showHideDetails = function(e, imageURL) {
 //   if (e.preventDefault !== undefined) {
@@ -47,18 +39,6 @@ class Likes extends Component {
     const pics = this.props.userData.likes.slice(0, this.state.displayAmount);
     this.setState({likes: pics});
   }
-  
-  perusePics (e) {
-    const pics = this.state.likes;
-    
-    if (e === 1) {
-      pics.unshift(pics.pop());
-  
-    } else if (e === -1) {
-      pics.push(pics.shift());
-    }
-    this.setState({likes: pics});
-  }
 
   render () {
     return (
@@ -86,9 +66,7 @@ class Likes extends Component {
         />
       </div>
     ) 
-  
   }
 }
 
 export default Likes;
-
