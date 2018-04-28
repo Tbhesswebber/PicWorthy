@@ -63,10 +63,10 @@ export default class Login extends Component {
           </div>
         </div>       
         <div className="modal-footer">
-          <span style={{color: "red"}}>
+          <span className={ !this.state.failedLogin ? "go" : "stop" }>
             {this.state.failedLogin}
           </span>
-          <a onClick={() => {this.props.handleShowSignup()}}>Need an account?</a>
+          <a onClick={this.props.showSignup}>Need an account?</a>
           <button type="button" onClick={this.sendLogin} >Login</button>
         </div>
       </div>

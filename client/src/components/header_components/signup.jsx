@@ -40,45 +40,55 @@ export default class Signup extends Component {
       })
   }
 
-  renderStatus() {
-    if (this.state.status !== undefined) {
-      if (this.state.status) {
-        return <span style={{color: `green`}}>Your account was successfully created!</span>
-      
-      } else {
-        return <span style={{color: `red`}}>Username already exists.</span>
-      }
-    }
-  }
-
   render() {
     return (
-      <div onHide={() => {this.props.hide()}}>
-          
-        <Modal.Header closeButton>
-          <Modal.Title>Create an account</Modal.Title>
-        </Modal.Header>
-        <a ></a>
+      <div className="modal-content">
+        <div className="modal-body">
+          <div className="first-name">
+            <label htmlFor="firstName">First Name:</label>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="Enter first name"
+              onChange = {this.updateInfo}
+            />
+          </div>
+          <div className="last-name">
+            <label htmlFor="lastName">Last Name:</label>
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Enter last name"
+              onChange = {this.updateInfo}
+            />
+          </div>
+          <div className="username">
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              name="username"
+              placeholder="Enter username"
+              onChange = {this.updateInfo}
+            />
+          </div>
+          <div className="password">
+            <label htmlFor="password">Password:</label>  
+            <input 
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter password"
+              value={this.state.password}
+              onChange={this.updateInfo}
+            />
+          </div>
+        </div>
         
-        <Modal>
-            First Name: <br/><input type="text" name="firstName" placeholder="Enter first name" onChange = {this.updateInfo}/><br/><br/>
-            Last Name: <br/><input type="text" name="lastName" placeholder="Enter last name" onChange = {this.updateInfo} /><br/><br/>
-            Username: <br/><input type="text" name="username" placeholder="Enter username" onChange = {this.updateInfo} /><br/><br/>
-            Password: <PasswordMask
-                        id="signupPassword"
-                        name="password"
-                        placeholder="Enter password"
-                        value={this.state.password}
-                        onChange={this.updateInfo}
-                        useVendorStyles={false}
-                      />
-            {this.renderStatus()}
-        </Modal>
-        
-        <Modal.Footer>
-            <a style={{float:`left`}} onClick={() => {this.props.handleShowLogin()}}>Already have an account?</a>
-            <button onClick={this.sendInfo} style={{borderRadius: `5px`, padding: `5px`}}> Register </button>
-        </Modal.Footer>
+        <div className="modal-footer">
+            <span className={this.state.status ? "go" : "stop"}>{this.state.status === undefined ? null : this.state.status ? "Username already exists." : "Your account was successfully created!"}</span>
+            <a onClick={() => {this.props.handleShowLogin()}}>Already have an account?</a>
+            <button onClick={this.sendInfo} >Register</button>
+        </div>
       </div>
     )
   }

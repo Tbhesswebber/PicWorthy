@@ -29,7 +29,7 @@ const NavRightUser = (props) => {
 const NavRightNoUser = (props) => {
   return (
     <div className="login">
-      <a onClick={e => props.handleModals(e)}>Login</a>
+      <a onClick={props.handleModals('login')}>Login</a>
       <Modal 
         handleModals={props.handleModals}
         modalData={props.modalData}

@@ -40,9 +40,10 @@ class App extends Component {
   }
 
   handleModals(e) {
-    e === close
-      ? this.setState({modal: {view: '', isClosed: true}})
-      : this.setState({modal: {view: e.target.text.toLowerCase(), isClosed: false}});
+    return (event) =>
+      e === "closed"
+        ? this.setState({modal: {view: '', isClosed: true}})
+        : this.setState({modal: {view: e, isClosed: false}});
   }
 
   render() {

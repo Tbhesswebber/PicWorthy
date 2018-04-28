@@ -30,6 +30,14 @@ a {
   text-decoration: none;
 }
 
+.go {
+  color: #116611;
+}
+
+.stop {
+  color: #661111;
+}
+
 /*******************/
 /***  Structure  ***/
 /*******************/
@@ -50,25 +58,12 @@ a {
 
 .fullhm {
   height: calc(100% - 30px);
-  margin: 15px 0;
+  margin: 1rem 0;
 }
 
 .fullwm {
   width: calc(100% - 30px);
-  margin: 0 15px;
-}
-
-/*
-.col {
-  flex-direction: column;
-}
-
-.row {
-  flex-direction: row;
-}
-
-.filler {
-  flex-grow: 100;
+  margin: 0 1rem;
 }
 
 /*******************/
@@ -175,12 +170,12 @@ a {
 .modal-body {
   grid-row: 1 / 2;
   display: grid;
-  grid-template-columns: auto;
-  grid-auto-rows: auto;
+  grid-template-columns: [col1-start] 1fs [col1-end];
   grid-gap: 10px;
 }
 
 .modal-body div {
+  grid-column: col1-start / col1-end;
   display: grid;
   height: 1rem;
   grid-gap: 10px;
@@ -214,8 +209,4 @@ a {
   grid-column: 2 / 3;
   align-self: flex-end;
   color: #999;
-}
-
-.bckg {
-  background-color: green;
 }
