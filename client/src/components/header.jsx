@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const { NavRightNoUser, NavRightUser } = require('./header_components/nav.jsx');
 
 const Header = (props) => (
-  <div className="header fullh fullwm">
+  <div className="header">
     <Link to='/' className="logo">Pic Worthy</Link>
     { props.userData.userName
       ? <NavRightUser
