@@ -7,7 +7,6 @@ const session = require('./middleware/session');
 const passport = require('./middleware/passport');
 const loggedOutRedirect = require('./middleware/loggedOutRedirect.js');
 const router = require('./routes/routes.js');
-const reactRoutes = require('./routes/reactRoutes.js');
 
 const app = express();
 
@@ -20,9 +19,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(loggedOutRedirect);
 
-// const reactApp = express.static(`${__dirname}/../client/dist`);
-// reactRoutes.forEach((r) => app.use(r, reactApp));
-app.get('*',  express.static(`${__dirname}/../client/dist`))
+app.get('*',  express.static(`${__dirname}/../client/dist`));
 
 app.use('/', router);
 
