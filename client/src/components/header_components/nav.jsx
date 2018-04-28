@@ -30,7 +30,8 @@ const NavRightNoUser = (props) => {
   return (
     <div className="login">
       <a onClick={props.handleModals('login')}>Login</a>
-      <Modal 
+      <Modal
+        setUser={props.setUser}
         handleModals={props.handleModals}
         modalData={props.modalData}
       />

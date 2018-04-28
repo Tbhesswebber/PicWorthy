@@ -13,7 +13,7 @@ export default class Login extends Component {
     };
     
     this.updateInfo = this.updateInfo.bind(this);
-    this.sendLogin = this.sendLogin.bind(this);
+    this.sendLogin = this.props.sendLogin.bind(this);
   }
 
   updateInfo(e) {
@@ -23,19 +23,19 @@ export default class Login extends Component {
     });
   }
 
-  sendLogin(e) {
-    axios.post('/api/login', this.state)
-      .then((data) => {
-        window.location.replace(`${window.location.origin}/locations`);
-      })
+  // sendLogin(creds) {
+  //   axios.post('/api/login', creds)
+  //     .then((data) => {
+  //       window.location.replace(`${window.location.origin}/locations`);
+  //     })
       
-      .catch((err) => {
-        this.setState({
-          failedLogin: 'Incorrect username or password.'
-        })
-        throw err; 
-      });
-  }
+  //     .catch((err) => {
+  //       this.setState({
+  //         failedLogin: 'Incorrect username or password.'
+  //       })
+  //       throw err; 
+  //     });
+  // }
 
   render() {
     return (
@@ -67,7 +67,7 @@ export default class Login extends Component {
             {this.state.failedLogin}
           </span>
           <a onClick={this.props.showSignup}>Need an account?</a>
-          <button type="button" onClick={this.sendLogin} >Login</button>
+          <button type="button" onClick={(e) => this.sendLogin(this.state)} >Login</button>
         </div>
       </div>
     );

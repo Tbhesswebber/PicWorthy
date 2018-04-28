@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import PasswordMask from 'react-password-mask'; 
 
 export default class Signup extends Component {
   constructor(props) {
@@ -25,12 +24,10 @@ export default class Signup extends Component {
     });
   }
 
-  sendInfo() { 
-    axios.post('/api/signup', this.state)
-      .then((data) => {
-        this.setState({
-          status: true
-        });
+  sendInfo(creds) { 
+    axios.post('/api/signup', creds)
+      .then(() => {
+        this.props.sendLogin(this.state);
       })
       
       .catch(() => {
@@ -87,7 +84,7 @@ export default class Signup extends Component {
         <div className="modal-footer">
             <span className={this.state.status ? "go" : "stop"}>{this.state.status === undefined ? null : this.state.status ? "Username already exists." : "Your account was successfully created!"}</span>
             <a onClick={() => {this.props.handleShowLogin()}}>Already have an account?</a>
-            <button onClick={this.sendInfo} >Register</button>
+            <button onClick={() => this.sendInfo(this.state)} >Register</button>
         </div>
       </div>
     )

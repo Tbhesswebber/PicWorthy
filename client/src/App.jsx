@@ -36,10 +36,7 @@ class App extends Component {
   }
 
   componentDidMount () {
-    axios.get('/api/user')
-      .then((user) => {
-        this.setState({userData: user})
-      });
+    this.getUser();
   }
 
   handleModals(e) {
@@ -47,6 +44,17 @@ class App extends Component {
       e === "closed"
         ? this.setState({modal: {view: '', isClosed: true}})
         : this.setState({modal: {view: e, isClosed: false}});
+  }
+
+  getUser () {
+    axios.get('/api/user')
+      .then(({user}) => {
+        this.setState({userData: user})
+      });
+  }
+
+  setUser (data) {
+    this.setState({userData: data});
   }
 
   render() {
@@ -57,6 +65,7 @@ class App extends Component {
       <div className="main fullh fullw">
         <Header
           userData={this.state.userData}
+          setUser={this.setUser.bind(this)}
           modalData={this.state.modal}
           handleModals={this.handleModals.bind(this)}
         />
