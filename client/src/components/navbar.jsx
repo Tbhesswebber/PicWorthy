@@ -63,27 +63,19 @@ const Name = (props) => {
       >
         
         <NavItem eventKey={ 1 }>
-          <Link to='/locations'>
-            <FaHome size={ 20 } />
-          </Link>
+    
         </NavItem>
         
         <NavItem eventKey={ 2 }>
-          <Link to ='/likes'>
-            <FaStar size={ 20 } />
-          </Link>
+
         </NavItem>
         
         <NavItem eventKey={ 3 } >
-          <Link to='/upload'>
-            <FaPlus size={ 20 } />
-          </Link>
+          
         </NavItem>
         
         <NavItem eventKey={ 4 }>
-          <Link to='/userpage'>
-            { props.userData.firstName }
-          </Link>
+          
         </NavItem>
         
         <NavItem 
@@ -91,9 +83,7 @@ const Name = (props) => {
           onClick={ props.logout }
         >
           
-          <Link to='/'>
-            Logout
-          </Link>
+          
         </NavItem>
       </Nav>
     )
