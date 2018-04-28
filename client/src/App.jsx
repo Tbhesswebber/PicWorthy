@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Navbar } from 'react-bootstrap';
-import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 
 import Header from './components/header.jsx';
@@ -13,9 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     
-    this.state = {
-      userPromise: axios.get('/api/user'),
-      
+    this.state = {     
       userData: {
         firstName: '',
         lastName: '',
@@ -39,6 +35,13 @@ class App extends Component {
     }
   }
 
+  componentDidMount () {
+    axios.get('/api/user')
+      .then((user) => {
+        this.setState({userData: user})
+      });
+  }
+
   handleModals(e) {
     return (event) =>
       e === "closed"
@@ -57,7 +60,9 @@ class App extends Component {
           modalData={this.state.modal}
           handleModals={this.handleModals.bind(this)}
         />
-        <Body />
+        <Body
+          userData={ this.state.userData }
+        />
         <Footer />
       </div>
     );
