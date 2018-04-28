@@ -231,6 +231,7 @@ a {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  z-index: -50;
 }
 
 .landing-image {
@@ -240,7 +241,7 @@ a {
   min-height: 100vh;
   min-width: 100vw;
   overflow: hidden;
-  z-index: -1;
+  z-index: -100;
 }
 
 .landing-left{
