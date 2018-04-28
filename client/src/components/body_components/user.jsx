@@ -2,7 +2,7 @@ import React from 'react';
 
 import WorthyMap from '../helper_components/worthyMap.jsx';
 import PicRow from '../helper_components/picRow.jsx';
-import Details from '../helper_components/details.jsx';
+import Details from '../helper_components/picDetail.jsx';
 
 const User = (props) => {
     

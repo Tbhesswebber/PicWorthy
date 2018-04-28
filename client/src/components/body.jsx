@@ -45,7 +45,7 @@ class Body extends React.Component {
   }
 
   //! Check to make sure that this has the proper information in each component
-  handleStarClick(e, { category, location, imageURL, description, loc}) {
+  handleLike(e, { category, location, imageURL, description, loc}) {
 
     axios.post('/api/favorites', {
       category,
@@ -77,10 +77,12 @@ class Body extends React.Component {
             userData={ this.props.userData }
           />
 
-          <Route 
+          <Route
             path='/locations'
-            component={Locations}
-            userData={ this.props.userData }
+            render={() => (
+              <Locations 
+                
+              />)}
           />
         </Switch>
       </div>

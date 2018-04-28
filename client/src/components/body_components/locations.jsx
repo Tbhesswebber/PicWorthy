@@ -4,18 +4,18 @@ import _ from 'lodash';
 
 import WorthyMap from '../helper_components/worthyMap.jsx';
 import PicRow from '../helper_components/picRow.jsx';
-import Details from '../helper_components/details.jsx';
+import Details from '../helper_components/picDetail.jsx';
 
 class Locations extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       markers: [],
       zoom: 4,
       position: {lat: 37.09, lng: -95.71},
-      detailedPicURL: 'NONE',
+      detailedPicURL: 'NONE'
     };
-    this.updatePictures = _.throttle(this.props.updatePictures.bind(this), 1000);
+    // this.updatePictures = _.throttle(this.props.updatePictures.bind(this), 1000);
     // this.updateDisplayAmount = this.updateDisplayAmount.bind(this);
     // this.getUserLocation = getUserLocation.bind(this);
     // this.showHideDetails = showHideDetails.bind(this);
@@ -25,19 +25,19 @@ class Locations extends Component {
     // this.rotatePicsUserpage = rotatePicsUserpage.bind(this);
     // this.rotatePicsLikes = rotatePicsLikes.bind(this);
   }
+ 
 
   componentDidMount() {
-    this.getUserLocation();
-    this.updateDisplayAmount();
+    // this.getUserLocation();
+    // this.updateDisplayAmount();
     window.addEventListener('resize', this.updateDisplayAmount);
   }
 
   render() {
-    const pics = this.props.pics.slice(0, this.props.displayAmount);
+    // const pics = this.props.pics.slice(0, this.props.displayAmount);
 
     return (
       <div>
-        
         <div>
         
         <WorthyMap
@@ -72,4 +72,4 @@ class Locations extends Component {
   }
 }
 
-export default Location;
+export default Locations;

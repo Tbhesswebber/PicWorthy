@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import WorthyMap from '../helper_components/worthyMap.jsx';
+import PicRow from '../helper_components/picRow.jsx';
+import Details from '../helper_components/picDetail.jsx';
+
 // const showHideDetails = function(e, imageURL) {
 //   if (e.preventDefault !== undefined) {
 //     e.preventDefault();
