@@ -81,7 +81,7 @@ class Body extends React.Component {
             path='/locations'
             render={() => (
               <Locations 
-                
+                userData={this.props.userData}
               />)}
           />
         </Switch>

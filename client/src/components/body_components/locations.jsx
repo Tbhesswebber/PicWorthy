@@ -34,7 +34,7 @@ class Locations extends Component {
   }
 
   render() {
-    // const pics = this.props.pics.slice(0, this.props.displayAmount);
+    const pics = this.props.userData.photos.slice(0, this.props.displayAmount);
 
     return (
       <div>

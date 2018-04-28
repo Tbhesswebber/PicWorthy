@@ -11,18 +11,15 @@ class Modal extends React.Component {
     super(props)
   
     this.state = {};
-
-    this.setUser = this.props.setUser.bind(this);
   }
 
   sendLogin(creds) {
-    axios.post('/api/login', creds)
+    return axios.post('/api/login', creds)
       .then(({data}) => {
-        window.location.replace(`${window.location.origin}/locations`);
-        console.log(data);
+        // console.log(data);
+        this.props.setUser(data);
         return data;
       })
-      .then(data => this.setUser(data))
       
       .catch((err) => {
         this.setState({
@@ -34,7 +31,7 @@ class Modal extends React.Component {
   
   renderContent (view) {
     if (view === 'login') {
-      return (<Login sendLogin={this.sendLogin} showSignup={this.props.handleModals('signup')} />);
+      return (<Login sendLogin={this.sendLogin} setUser={this.props.setUser} showSignup={this.props.handleModals('signup')} />);
     }
     if (view === 'signup') {
       return (<Signup sendLogin={this.sendLogin}/>);

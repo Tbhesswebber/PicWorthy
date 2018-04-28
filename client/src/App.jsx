@@ -33,6 +33,7 @@ class App extends Component {
       detailProps: undefined,
       lastCardClicked: undefined
     }
+    this.setUser = this.setUser.bind(this);
   }
 
   componentDidMount () {
@@ -50,11 +51,13 @@ class App extends Component {
     axios.get('/api/user')
       .then(({user}) => {
         this.setState({userData: user})
+        console.log(user);
       });
   }
 
   setUser (data) {
     this.setState({userData: data});
+    console.log(this.state);
   }
 
   render() {
@@ -65,7 +68,7 @@ class App extends Component {
       <div className="main fullh fullw">
         <Header
           userData={this.state.userData}
-          setUser={this.setUser.bind(this)}
+          setUser={this.setUser}
           modalData={this.state.modal}
           handleModals={this.handleModals.bind(this)}
         />

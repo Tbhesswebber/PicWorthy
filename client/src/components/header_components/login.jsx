@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     
     super(props);
@@ -67,9 +68,13 @@ export default class Login extends Component {
             {this.state.failedLogin}
           </span>
           <a onClick={this.props.showSignup}>Need an account?</a>
-          <button type="button" onClick={(e) => this.sendLogin(this.state)} >Login</button>
+          <button type="button" onClick={(e) => this.sendLogin(this.state).then(data => {
+            this.props.history.push('/locations');
+          })} >Login</button>
         </div>
       </div>
     );
   }
 };
+
+export default withRouter(Login);
