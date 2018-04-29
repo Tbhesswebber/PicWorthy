@@ -210,14 +210,6 @@ export default class Upload extends Component {
               suggestions={this.state.suggestions}
               tags={this.state.tags}
             />
-            
-          
-          </div>
-          <div className="mid submitted">
-            <div>
-              <BeatLoader />
-              {this.state.submitted}
-            </div>
           </div>
         </div>
     )
