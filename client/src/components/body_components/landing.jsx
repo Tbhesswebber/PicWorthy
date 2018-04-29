@@ -21,16 +21,17 @@ class Landing extends Component {
   componentDidUpdate () {
     this.startInterval();
   }
-
+  
+  componentWillUnmount () {
+    clearInterval(this.changePhoto);
+  }
+  
   startInterval () {
     this.changePhoto = setInterval(() => {
       this.advanceImage(this.state.images);
     }, 7000);
   }
 
-  componentWillUnmount () {
-    clearInterval(this.changePhoto);
-  }
   
   advanceImage (images) {
     clearInterval(this.changePhoto);

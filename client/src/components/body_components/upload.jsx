@@ -177,25 +177,25 @@ export default class Upload extends Component {
     
     
     return (
-      <div>
-        
-        
-          <Col xs={9} md={4} style={{height: `400px`}}> 
-            <Worthymap 
-              getLocationUpload={this.getLocationUpload}
-              onMapClick={this.pinLocation}
-              defaultZoom={10}
-              defaultCenter={{lat: 37.77, lng: -122.41}}
-              markers={ marker }
-            />
-          </Col>
+      <div className="body-content-equal-thirds fullh fullw" >
+        <div className="tl map" >
+
+          <Worthymap 
+            getLocationUpload={this.getLocationUpload}
+            onMapClick={this.pinLocation}
+            defaultZoom={10}
+            defaultCenter={{lat: 37.77, lng: -122.41}}
+            markers={ marker }
+          />
+
+        </div>
           
 
-          <Col xs={6} md={4}>
+          <div className="tm drop-zone" >
             <DropZone getLink={this.getLink} setLocation={this.setLocation}/>
-          </Col>
+          </div>
           
-          <div>
+          <div className="tr upload-form">
             <UploadForm
               category={this.state.category}
               location={this.state.location}
@@ -210,12 +210,12 @@ export default class Upload extends Component {
               suggestions={this.state.suggestions}
               tags={this.state.tags}
             />
-            <br />
             
+          
+          </div>
+          <div className="mid submitted">
             <div>
               <BeatLoader />
-            </div>
-            <div>
               {this.state.submitted}
             </div>
           </div>

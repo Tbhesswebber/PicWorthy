@@ -15,7 +15,7 @@ class Locations extends Component {
       position: {lat: 37.09, lng: -95.71},
       detailedPicURL: 'NONE'
     };
-    // this.updatePictures = _.throttle(this.props.updatePictures.bind(this), 1000);
+    this.updatePictures = _.throttle(this.props.updatePictures.bind(this), 1000);
     // this.updateDisplayAmount = this.updateDisplayAmount.bind(this);
     // this.getUserLocation = getUserLocation.bind(this);
     // this.showHideDetails = showHideDetails.bind(this);
@@ -37,8 +37,8 @@ class Locations extends Component {
     const pics = this.props.userData.photos.slice(0, this.props.displayAmount);
 
     return (
-      <div>
-        <div>
+      <div className="body-content-equal-thirds fullh fullw" >
+        <div className={`${(pics.length === 0 ? 'full-grid' : 'top-two-thirds')} map`} >
         
         <WorthyMap
           markers={ this.state.markers } 
@@ -49,9 +49,9 @@ class Locations extends Component {
         
         </div>
         
-        <div>
+        {/* <div>
           Around You
-        </div>
+        </div> */}
         
         <div>
           { pics.length === 0 ? null :
@@ -64,9 +64,9 @@ class Locations extends Component {
           }
         </div>
         
-        <div>
+        {/* <div>
           <Details />
-        </div>
+        </div> */}
       </div>
     );
   }

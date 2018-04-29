@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import {FaStarO, FaStar, FaFacebookSquare, FaTwitter, FaYelp, FaInstagram} from 'react-icons/lib/fa';
 
 
-const getPic = (url, pics) => {
-  for (const pic of pics) {
-    if (pic.imageURL === url) {
-      return pic;
-    }
-  }
-  return 'NOT_FOUND';
-}
+// const getPic = (url, pics) => {
+//   for (const pic of pics) {
+//     if (pic.imageURL === url) {
+//       return pic;
+//     }
+//   }
+//   return 'NOT_FOUND';
+// }
 
 const DisplayStar = ({ pic, handleStarClick, isStarred }) => {
   if (isStarred) {

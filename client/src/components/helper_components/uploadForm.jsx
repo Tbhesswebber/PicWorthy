@@ -16,66 +16,70 @@ export default class UploadForm extends Component {
   render() {
     const uploadStatus = this.props.uploadStatus.map((status) => <div>{status}</div>);
     return (
-      <div >
-        {this.checkImgUrl()}
       
-      <br />
       
-      <div>{uploadStatus}</div>
-      <form onSubmit={this.props.handleSubmit}>
-        
-        <label>
-          Category
-          <input
-            name="category"
-            type="text"
-            placeholder="Enter the type of place"
-            value={this.props.category}
-            onChange={this.props.handleInputChange}
-            />
-        </label>
-        
-        <label>
-          Place
-          <input
-            name="location"
-            type="text"
-            placeholder="Enter the place's name"
-            value={this.props.location}
-            onChange={this.props.handleInputChange}
-            />
-        </label>
-        
-        <label>
-          Description
-          <textarea
-            name="description"
-            type="text"
-            placeholder="Describe what's special about this place"
-            value={this.props.description}
-            onChange={this.props.handleInputChange} 
-            />
-        </label> <br /><br /><br /><br /><br /><br />
+      <form className="upload fullh fullw" onSubmit={this.props.handleSubmit}>
+        <div className="form fullh fullw">
+          <div className="form-header">
+            {this.checkImgUrl()}
+            {uploadStatus}
+          </div>
 
-        <label>
-          Tags
-          <textarea
-            name="tags"
-            type="text"
-            placeholder="Add tags spaced by commas"
-            value={this.props.tags}
-            onChange={this.props.handleInputChange} 
-            />
-        </label> 
+          <div className="form-body">
+            
+              <label>
+                Category
+              </label>
+              <input
+                name="category"
+                type="text"
+                placeholder="Enter the type of place"
+                value={this.props.category}
+                onChange={this.props.handleInputChange}
+              />
+                        
+              <label>
+                Place
+              </label>
+              <input
+                name="location"
+                type="text"
+                placeholder="Enter the place's name"
+                value={this.props.location}
+                onChange={this.props.handleInputChange}
+              />
+            
+              <label>
+                Description
+              </label>
+              <textarea
+                name="description"
+                type="text"
+                placeholder="Describe what's special about this place"
+                value={this.props.description}
+                onChange={this.props.handleInputChange}
+              />
+             
+              <label>
+                Tags
+              </label> 
+              <textarea
+                name="tags"
+                type="text"
+                placeholder="Add tags spaced by commas"
+                value={this.props.tags}
+                onChange={this.props.handleInputChange} 
+              />
+            </div>
 
-        <div>
-          <input
-            name="submit"
-            type="submit" 
-          />
+          <div className="form-footer">
+            <input
+              name="submit"
+              type="submit" 
+            />
+          </div>
         </div>
       </form>
-      </div>
     );
   }
 }
