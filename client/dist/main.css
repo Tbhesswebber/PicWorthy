@@ -1,13 +1,14 @@
 /*******************/
 /***   Setup     ***/
 /*******************/
-/* 
-Color Scheme
-#5c9ead
-#594157
-#326273
-#a0d2db
-#bee7e8 */
+/* This is the color scheme as it currently stands  */
+.colors {
+  color: #5c9ead;
+  color: #594157;
+  color: #326273;
+  color: #a0d2db;
+  color: #bee7e8;
+}
 
 
 
@@ -39,12 +40,13 @@ body {
   width: 100%;
 }
 
-a {
+a, a:active {
   text-decoration: none;
+  color: #326273;
 }
 
-input {
-  background: #ccc;
+input, textarea {
+  background: #e8e8e8;
   border-radius: 5px;
 }
 
@@ -79,6 +81,10 @@ button {
 .main {
   display: grid;
   grid-template: fit-content(0) auto fit-content(0) / 1fr;
+  grid-template-areas:
+    "header"
+    "body"
+    "footer";
 }
 
 .fullh {
@@ -90,12 +96,12 @@ button {
 }
 
 .fullhm {
-  height: calc(100% - 30px);
+  height: calc(100% - 2rem);
   margin: 1rem 0;
 }
 
 .fullwm {
-  width: calc(100% - 30px);
+  width: calc(100% - 2rem);
   margin: 0 1rem;
 }
 
@@ -104,9 +110,9 @@ button {
 /*******************/
 
 .header {
-  grid-row: 1 / 2;
+  grid-area: header;
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: fit-content(0) auto fit-content(0);
   grid-gap: 1rem;
   padding: .5rem 1rem;
   color: #326273;
@@ -125,15 +131,21 @@ button {
   grid-column: 1 / 2;
 }
 
-.login {
+.login, .user {
   grid-column: 3/4;
   font-size: 1.75rem;
   align-self: center;
 }
 
-.logout {
-  grid-column: 3 / 4;
+.user {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-column-gap: 1rem; 
 }
+
+/* .logout {
+  grid-column: 3 / 4;
+} */
 
 .username {
   grid-column: 2 / 3;
@@ -142,17 +154,70 @@ button {
 /*******************/
 /***     App     ***/
 /*******************/
-/*
+
 .body {
-  grid-row-start: 2;
-}*/
+  grid-row: body;
+  overflow: hidden;
+}
+
+.body-content-equal-thirds {
+  padding:1rem 1rem;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: 
+    "tl tm tr"
+    "ml mid mr"
+    "bl bm br";
+  grid-gap: 1rem;
+}
+
+.body-content-center-heavy {
+  padding:1rem 2rem;
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 2fr 1 fr;
+  grid-template-areas: 
+    "tl tm tr"
+    "ml mid mr"
+    "bl bm br";
+  grid-gap: 1rem;
+}
+
+.full-grid {
+  grid-area: 1 / 1 / 4 / 4;
+}
+
+.top-two-thirds {
+  grid-area: tl-start / 1 / mr-end / 4;
+}
+
+.tl {
+  grid-area: tl;
+}
+
+.tm {
+  grid-area: tm;  
+}
+
+.tr {
+  grid-area: tr;  
+}
+
+.mid {
+  grid-area: mid;
+  display: grid;
+  justify-items: center;
+}
+
+
 
 /*******************/
 /***    Footer   ***/
 /*******************/
 
 .footer {
-  grid-row-start: 3;
+  grid-area: footer;
   /* background: linear-gradient(90deg, #00000000 20%, #eeeeee99, #00000000 80%);  */
   background: #eeeeee99; 
   display: grid;
@@ -187,7 +252,7 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  background: #999;
+  background: #ddd;
   color: #222;
   /* background: #594157;
   color: #bee7e8; */
@@ -317,4 +382,52 @@ button {
 .right-chevron, .left-chevron {
   justify-self: center;
   grid-row: 2 / 3;
+}
+
+/*******************/
+/***    Forms    ***/
+/*******************/
+
+.form {
+  display: grid;
+  grid-template-rows: fit-content(0) auto fit-content(0);
+  grid-template-columns: auto;
+  grid-row-gap: 1rem;
+}
+
+.form-header {
+  grid-row: 1 / 2;
+}
+
+.form-footer {
+  grid-row: 3 / 4;
+  text-align: center;
+}
+
+.form-body {
+  grid-row: 2 / 3;
+  display: grid;
+  grid-template-columns: auto 1fs;
+  grid-auto-rows: auto;
+  grid-gap: .75rem;
+  font-size: 1.25rem;
+}
+
+.form-body label {
+  grid-column: 1 / 2;
+}
+
+.form-body input, .form-body textarea {
+  line-height: 1.45rem;
+  grid-column: 2 / 3;
+  font-size: 1.25rem;
+}
+
+.form-body input {
+  height: 1.5rem
+}
+
+.form-body textarea {
+  resize: none;
+  height: 1fs;
 }
