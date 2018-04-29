@@ -8,7 +8,7 @@ const Header = (props) => {
   return (
     <div className="header">
       <Link to='/' className="logo">PicWorthy</Link>
-      { !!props.userData.userName
+      { !!props.userData && props.userData.username !== ""
         ? <NavRightUser
             userData={props.userData}
           />

@@ -2,7 +2,6 @@ import React from 'react';
 import Close from 'react-icons/lib/fa/close';
 import axios from 'axios';
 
-
 import Login from '../header_components/login.jsx';
 import Signup from '../header_components/signup.jsx';
 
@@ -16,9 +15,8 @@ class Modal extends React.Component {
   sendLogin(creds) {
     return axios.post('/api/login', creds)
       .then(({data}) => {
-        // console.log(data);
         this.props.setUser(data);
-        return data;
+      return data;
       })
       
       .catch((err) => {
@@ -34,7 +32,7 @@ class Modal extends React.Component {
       return (<Login sendLogin={this.sendLogin} setUser={this.props.setUser} showSignup={this.props.handleModals('signup')} />);
     }
     if (view === 'signup') {
-      return (<Signup sendLogin={this.sendLogin}/>);
+      return (<Signup sendLogin={this.sendLogin} setUser={this.props.setUser}/>);
     }
   }  
 

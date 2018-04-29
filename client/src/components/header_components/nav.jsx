@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {FaStar, FaHome, FaPlus} from 'react-icons/lib/fa';
 
@@ -10,7 +11,7 @@ const NavRightUser = (props) => {
       <Link to='/locations'>
         <FaHome size={ 20 } />
       </Link>
-      <Link to ='/likes'>
+      <Link to='/likes'>
         <FaStar size={ 20 } />
       </Link>
       <Link to='/upload'>
@@ -19,7 +20,7 @@ const NavRightUser = (props) => {
       <Link to='/userpage'>
         { props.userData.firstName }
       </Link>
-      <Link to='/'>
+      <Link to='/logout'>
         Logout
       </Link>
     </div>
