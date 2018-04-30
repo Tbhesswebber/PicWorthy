@@ -16,22 +16,7 @@ class Locations extends Component {
       detailedPicURL: 'NONE'
     };
     this.updatePictures = _.throttle(this.props.updatePictures.bind(this), 1000);
-    // this.updateDisplayAmount = this.updateDisplayAmount.bind(this);
-    // this.getUserLocation = getUserLocation.bind(this);
-    // this.showHideDetails = showHideDetails.bind(this);
-    // this.handleStarClick = this.handleStarClick.bind(this);
-    // this.rotatePics = this.rotatePics.bind(this);
-    // this.rotatePicsLocation = rotatePicsLocation.bind(this);
-    // this.rotatePicsUserpage = rotatePicsUserpage.bind(this);
-    // this.rotatePicsLikes = rotatePicsLikes.bind(this);
   }
- 
-
-  // componentDidMount() {
-  //   // this.getUserLocation();
-  //   // this.updateDisplayAmount();
-  //   // window.addEventListener('resize', this.updateDisplayAmount);
-  // }
 
   render() {
     const photos = this.props.userData.photos.slice(0);

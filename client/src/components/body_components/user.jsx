@@ -12,7 +12,6 @@ const User = (props) => {
 
   return (
     <div className="user fullh fullw body-content-equal-thirds" >
-      <div className="user-pic-row top-two-thirds">
       { photos.length === 0 ? null :
         <PicRow 
           photos={photos}
@@ -21,7 +20,6 @@ const User = (props) => {
           title="Your Places"
         />
       }
-      </div>
       <div className={`user-map ${photos.length === 0 ? 'full-grid' : 'bottom-third'}`}>
         <WorthyMap
           markers={markers}

@@ -9,11 +9,11 @@ const PicRow = (props) => {
   const photos = props.photos.slice(0);
   return (
       <div className={`pic-row ${props.mainClass}`}>
-        <div className="pic-row-title">
+        {/* <div className="pic-row-title">
           <h1>{props.title}</h1>
-        </div>
+        </div> */}
         <div className="pic-row-content">
-          <a className="pic-row-chevron-left chevron chevron-left">
+          <a className="pic-row-chevron-left">
             <FaChevronLeft
               className="left-chevron"
               onClick={() => this.advanceImage(props.photos)}              
@@ -24,7 +24,7 @@ const PicRow = (props) => {
               <Card key={index} photo={photo} display={index < props.renderCount ? "show" : "hide"} />
             )}
           </div>
-          <a className="pic-row-chevron-right chevron chevron-right">
+          <a className="pic-row-chevron-right">
               <FaChevronRight
                 className="right-chevron"
                 onClick={() => this.retreatImage(props.photos)}
