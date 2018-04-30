@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
-import {FaStarO, FaStar, FaFacebookSquare, FaTwitter, FaYelp, FaInstagram} from 'react-icons/lib/fa';
+import { FaStarO, FaStar } from 'react-icons/lib/fa';
 
 
-// const getPic = (url, pics) => {
-//   for (const pic of pics) {
-//     if (pic.imageURL === url) {
-//       return pic;
-//     }
-//   }
-//   return 'NOT_FOUND';
-// }
 
 const DisplayStar = ({ pic, handleStarClick, isStarred }) => {
   if (isStarred) {
@@ -19,7 +11,7 @@ const DisplayStar = ({ pic, handleStarClick, isStarred }) => {
         size={ 40 }
       />
     )
-  
+    
   } else {
     return (
       <FaStarO
@@ -31,33 +23,24 @@ const DisplayStar = ({ pic, handleStarClick, isStarred }) => {
   }
 }
 
-const checkFavorites = (userFavorites, img) => userFavorites.includes(img);
 
 
-export default class Details extends Component {
-
-  scrollToBottom() {
-    // not sure if I like this scroll down
-    // this.scrollEnd.scrollIntoView({behavior: 'smooth'});
+class PicDetails extends Component {
+  constructor (props) {
+    super(props)
+  
+    this.state = {
+       
+    }
   }
   
-  componentDidUpdate(prevProps) {
-    if (prevProps.detailedPicURL === 'NONE' && this.props.detailedPicURL !== 'NONE') {
-      this.scrollToBottom();
-    }
-  }
-
+  checkFavorites (userFavorites, img) { userFavorites.includes(img) };
+  
   render() {
     
-    const { detailedPicURL, pics, userFavorites, showHideDetails, handleStarClick } = this.props 
+    const { photos, likes } = this.props.userData
 
-    let pic = getPic(detailedPicURL, pics);
-
-    if (pic === 'NOT_FOUND') {
-      return <div />;
-    }
-
-    const isStarred = checkFavorites(userFavorites.map((p) => p.imageURL), pic.imageURL)
+    const isStarred = this.checkFavorites(userFavorites.map((p) => p.imageURL), pic.imageURL)
 
 
     return (
@@ -79,33 +62,11 @@ export default class Details extends Component {
                 handleStarClick={ handleStarClick }
                 isStarred={ isStarred }
               />
-              {/*
-              <FaInstagram 
-                style={ iconStyle}  
-                size={ 30 } 
-              />
-              <FaFacebookSquare 
-                style={ iconStyle } 
-                size={ 30 } 
-              /> 
-              <FaTwitter 
-                style={ iconStyle } 
-                size={ 30 } 
-              />
-              <FaYelp 
-                style={ iconStyle } 
-                size={ 30 } 
-              />
-              */}
 
         </div>
-        
-        <div 
-          ref={ (el) => this.scrollEnd = el  }
-        />
       </div>
     )
   }
 };
 
-
+export default PicDetails;

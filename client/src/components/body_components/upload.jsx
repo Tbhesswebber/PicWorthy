@@ -6,7 +6,7 @@ import UploadForm from '../helper_components/uploadForm.jsx';
 import Worthymap from '../helper_components/worthyMap.jsx';
 import DropZone from '../helper_components/dropZone.jsx';
 
-export default class Upload extends Component {
+class Upload extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -84,7 +84,7 @@ export default class Upload extends Component {
       }
       photo.user_id = this.props.userData._id;
       photo.username = this.props.userData.username;
-      photo.tags = this.state.tags.split(', ');
+      photo.tags = this.state.tags.toLowerCase().split(', ');
       photos.push(photo);
     }
 
@@ -110,13 +110,15 @@ export default class Upload extends Component {
       loading: true
     })
 
-    let body = this.state.tags.split(', ').reduce((acc, tag) => {
-      acc.tags[tag] = 1;
-    }, {username: '', tags: {}});
-  
-    axios.post(`/api/user`, body).then(() => console.log('this is actually working very well'))
+    const body = this.state.tags.split(', ').reduce((acc, tag) => {
+      this.props.userData.tags ? acc.tags : acc.tags = {};
+      acc.tags[tag] ? acc.tags[tag]++ : acc.tags[tag] = 1;
+      return acc;
+    }, {username: this.props.userData.username, tags: this.props.userData.tags});
 
-    axios.post(`/api/upload`, photos)
+    body.photos = photos;
+
+    axios.post(`/api/upload`, body)
     
       .then(res => {
         this.setState({
@@ -169,6 +171,7 @@ export default class Upload extends Component {
     this.setState({ tags: newTags });
   }
 
+
   render() {
     const { lat, lng } = this.state.coords;
     const marker = [lat, lng].includes(null) 
@@ -216,3 +219,4 @@ export default class Upload extends Component {
   }
 }
 
+export default Upload;

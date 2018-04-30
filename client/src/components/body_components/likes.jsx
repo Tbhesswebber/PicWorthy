@@ -53,13 +53,13 @@ class Likes extends Component {
         
         </div>
         
-        <Details 
+        {/* <Details 
           detailedPicURL={ this.state.detailedPicURL }
           pics={ this.state.userData.likes }
           showHideDetails={ this.showHideDetails }
           handleStarClick={ this.handleStarClick }
           userFavorites={ this.state.userData.likes }
-        />
+        /> */}
         
         <PicRow 
           showHideDetails={ this.showHideDetails } 

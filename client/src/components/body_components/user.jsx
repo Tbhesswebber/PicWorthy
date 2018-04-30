@@ -6,31 +6,21 @@ import Details from '../helper_components/picDetail.jsx';
 
 const User = (props) => {
     
-  const pics = this.state.userData.photos.slice(0, this.state.displayAmount);
+  const photos = props.userData.photos.slice(0);
 
   return (
-    <div>
+    <div className="user fullh fullw" >
       
-      <h1>Hello {this.props.userData.firstName}</h1>
+      <h1>Hello {props.userData.firstName}</h1>
       <h2>Your Places</h2>
       
-      { pics.length === 0 ? null :
+      { photos.length === 0 ? null :
         <PicRow 
-          showHideDetails={ props.showHideDetails } 
-          rowType="locations"
-          pics={ pics }
-          rotatePics={ rotatePics }
+          // showHideDetails={ props.showHideDetails }
+          photos={ photos }
           detailedPicURL={ props.detailedPicURL }
         />
       }
-      
-      <Details 
-        detailedPicURL={ props.detailedPicURL }
-        pics={ props.userData.photos }
-        showHideDetails={ showHideDetails }
-        handleStarClick={ handleStarClick }
-        userFavorites={ props.userData.likes }
-      />
     
     </div>
   )

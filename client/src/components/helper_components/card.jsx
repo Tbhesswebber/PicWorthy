@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 
 const Card = (props) => (
   <div className="card">
+    <div className="card-content">
         <img 
-          src={ props.picDetails.imageURL }
+          src={ props.photo.imageURL }
         />
+    </div>
   </div>
 )
 

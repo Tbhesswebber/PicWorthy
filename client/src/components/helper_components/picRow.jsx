@@ -5,18 +5,31 @@ import {FaChevronRight, FaChevronLeft} from 'react-icons/lib/fa';
 import Card from './card.jsx';
 
 
-const PicRow = ({ pics, rotatePics,showHideDetails, detailedPicURL }) => {    
+const PicRow = (props) => {
   return (
-    <div className="pic-row fullw" >
-      <a href='#'><FaChevronLeft
-        onClick={(e) => rotatePics(e, 'LEFT')} 
-      /></a>
-      
-      { props.pics.map((pic, key) => (<Card key={key} pic={pic} />)) }
-      
-      <a href='#'><FaChevronRight
-        onClick={(e) => rotatePics(e, 'RIGHT')}
-      /></a>
+    <div className="bottom-third fullw" >
+      <div className="pic-row">
+        <div className="pic-row-title">
+          <h1>{props.title}</h1>
+        </div>
+        <div className="pic-row-content">
+          <a className="pic-row-chevron-left chevron chevron-left">
+            <FaChevronLeft
+              className="left-chevron"
+              onClick={() => this.advanceImage(this.state.images)}              
+            />
+          </a>
+          <div className="pic-row-images">
+            <Card photo={props.photos[0]} />
+          </div>
+          <a className="pic-row-chevron-right chevron chevron-right">
+              <FaChevronRight
+                className="right-chevron"
+                onClick={() => this.retreatImage(this.state.images)}
+              />
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

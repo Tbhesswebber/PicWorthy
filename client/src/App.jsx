@@ -18,12 +18,9 @@ class App extends Component {
         username: '',
         user_id: '',
         likes: [],
-        photos: []
+        photos: [],
+        tags: {}
       },
-      // modal: {
-      //   view: '',//passed down to modal component to indicate if a modal should be shown
-      //   isClosed: true
-      // },
       mapCenter: {
         lat: 41.9,
         lng: -87.624
@@ -33,25 +30,6 @@ class App extends Component {
       detailProps: undefined,
       lastCardClicked: undefined
     }
-  }
-
-  componentDidMount () {
-    this.getUser();
-  }
-
-  handleModals(e) {
-    return (event) =>
-      e === "closed"
-        ? this.setState({modal: {view: '', isClosed: true}})
-        : this.setState({modal: {view: e, isClosed: false}});
-  }
-
-  getUser () {
-    axios.get('/api/user')
-      .then(({user}) => {
-        this.setState({userData: user})
-        console.log(user);
-      });
   }
 
   setUser (data) {

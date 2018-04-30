@@ -5,6 +5,7 @@ import RouteWithProps from './helper_components/routeWithProps.jsx';
 import Landing from './body_components/landing.jsx';
 import Locations from './body_components/locations.jsx';
 import Upload from './body_components/upload.jsx';
+import User from './body_components/user.jsx';
 import Logout from './header_components/logout.jsx';
 //* Functions
 import fetchClosestPics from '../helpers/fetchClosestPics.jsx';
@@ -13,8 +14,7 @@ class Body extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      pics: [],
-      displayAmount: 0,
+      displayAmount: 1,
       markers: [],
       zoom: 4,
       position: { lat: 37.09, lng: -95.71 },
@@ -63,7 +63,8 @@ class Body extends React.Component {
       }
     })
       .then(({ data }) => this.setState({ userData: data }))
-  }
+  } 
+  //!
 
   render() {
     return (
@@ -76,12 +77,20 @@ class Body extends React.Component {
 
           <Route
             path='/upload'
-            render={() =>
+            render={() => (
               <Upload
-                component={Upload}
                 userData={this.props.userData}
               />
-            }
+            )}
+          />
+
+          <Route
+            path='/userPage'
+            render={() => (
+              <User 
+                userData={this.props.userData}
+              />
+            )}
           />
 
           <Route
@@ -90,12 +99,8 @@ class Body extends React.Component {
               <Locations
                 userData={this.props.userData}
                 updatePictures={this.updatePictures.bind(this)}
-              />)}
-          />
-
-          <Route
-            path='/logout'
-            component={Logout}
+              />
+            )}
           />
 
         </Switch>

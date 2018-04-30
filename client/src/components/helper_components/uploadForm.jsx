@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import TagInput from './tagInput.jsx';
+// import TagInput from './tagInput.jsx';
 
 export default class UploadForm extends Component {
   checkImgUrl() {
@@ -16,7 +16,6 @@ export default class UploadForm extends Component {
   render() {
     const uploadStatus = this.props.uploadStatus.map((status) => <div>{status}</div>);
     return (
-      
       
       <form className="upload fullh fullw" onSubmit={this.props.handleSubmit}>
         <div className="form fullh fullw">

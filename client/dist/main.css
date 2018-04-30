@@ -54,7 +54,7 @@ input, textarea {
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #222;
   opacity: 1;
-  font-size: 1rem; /* Firefox */
+  /* font-size: 1rem; Firefox */
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
@@ -65,6 +65,12 @@ button {
   border-radius: 5px;
   background: #ccc;
   font-size: .9rem;
+}
+
+img {
+  display: block;
+  width: auto;
+  max-height: 100%;
 }
 
 .go {
@@ -191,6 +197,10 @@ button {
 
 .top-two-thirds {
   grid-area: tl-start / tl-start / mr-end / mr-end;
+}
+
+.bottom-third {
+  grid-area: bl-start / bl-start / br-end / br-end;  
 }
 
 .tl {
@@ -430,4 +440,62 @@ button {
 .form-body textarea {
   resize: none;
   height: 1fs;
+}
+
+/*******************/
+/***   Pic-Row   ***/
+/*******************/
+
+.pic-row {
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fs;
+  grid-template-rows: fit-content(0) 1fs;
+  grid-gap: 1rem;
+  align-content: center;
+  justify-content: center;
+}
+
+.pic-row-title {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.pic-row-content {
+  grid-area: 2 / 1 / -1 / -1;
+  display: grid;
+  grid-template-columns: fit-content(0) repeat(auto-fill, calc(100vw / 5)) fit-content(0);
+  grid-template-rows: minmax(200px, calc(100% / 3 - 150px));
+}
+
+.pic-row-chevron-left {
+  order: -1;
+}
+
+.pic-row-images {
+  order: 0;
+}
+
+.pic-row-chevron-left {
+  order: 1;
+}
+
+.card {
+  width: calc(100vh / 5);
+  max-height: calc(100% / 3 - 2rem);
+  border-radius: 25px;
+  border: 1px solid #222;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.card-content {
+  width: calc(100vh / 5 - 2rem);
+  height: calc(100% - 2rem);
+  margin: 1rem;
+  border: 1px solid #222;
+  border-radius: 5px;
+  overflow: hidden;
+  justify-content: stretch;
+  align-content: stretch;
 }

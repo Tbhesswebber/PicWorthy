@@ -27,18 +27,18 @@ class Locations extends Component {
   }
  
 
-  componentDidMount() {
-    // this.getUserLocation();
-    // this.updateDisplayAmount();
-    window.addEventListener('resize', this.updateDisplayAmount);
-  }
+  // componentDidMount() {
+  //   // this.getUserLocation();
+  //   // this.updateDisplayAmount();
+  //   // window.addEventListener('resize', this.updateDisplayAmount);
+  // }
 
   render() {
-    const pics = this.props.userData.photos.slice(0, this.props.displayAmount);
+    const photos = this.props.userData.photos.slice(0);
 
     return (
       <div className="body-content-equal-thirds fullh fullw" >
-        <div className={`${(pics.length === 0 ? 'full-grid' : 'top-two-thirds')} map`} >
+        <div className={`${(photos.length === 0 ? 'full-grid' : 'top-two-thirds')} map`} >
         
         <WorthyMap
           markers={ this.state.markers } 
@@ -53,16 +53,14 @@ class Locations extends Component {
           Around You
         </div> */}
         
-        <div>
-          { pics.length === 0 ? null :
-            <PicRow 
-              showHideDetails={ this.showHideDetails } 
+          { photos.length === 0 ? null :
+            <PicRow
+              title="Around You"
               rowType="locations"
-              pics={ pics }
+              photos={ photos }
               detailedPicURL={ this.state.detailedPicURL }
             />
           }
-        </div>
         
         {/* <div>
           <Details />
