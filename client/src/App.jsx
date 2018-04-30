@@ -20,10 +20,10 @@ class App extends Component {
         likes: [],
         photos: []
       },
-      modal: {
-        view: '',//passed down to modal component to indicate if a modal should be shown
-        isClosed: true
-      },
+      // modal: {
+      //   view: '',//passed down to modal component to indicate if a modal should be shown
+      //   isClosed: true
+      // },
       mapCenter: {
         lat: 41.9,
         lng: -87.624
@@ -33,7 +33,6 @@ class App extends Component {
       detailProps: undefined,
       lastCardClicked: undefined
     }
-    this.setUser = this.setUser.bind(this);
   }
 
   componentDidMount () {
@@ -68,9 +67,7 @@ class App extends Component {
       <div className="main fullh fullw">
         <Header
           userData={this.state.userData}
-          setUser={this.setUser}
-          modalData={this.state.modal}
-          handleModals={this.handleModals.bind(this)}
+          setUser={this.setUser.bind(this)}
         />
         <Body
           userData={ this.state.userData }

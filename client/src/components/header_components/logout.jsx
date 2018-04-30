@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-class Logout extends Component {
-
-  componentDidMount(){
-    this.props.router.push('/');
-  }
-
-  render() {
-    return (
-      <h1 className="centered">
-        Logging out...
-      </h1>
-    );
-  }
+const Logout = () => {
+  return (
+    <Link to="/">
+      Logout
+    </Link>
+  );
 }
 
-export default withRouter(Logout);
+export default Logout;

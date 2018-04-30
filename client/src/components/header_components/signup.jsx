@@ -84,7 +84,7 @@ class Signup extends Component {
         
         <div className="modal-footer">
             <span className={this.state.status ? "go" : "stop"}>{this.state.status === undefined ? null : this.state.status ? "Username already exists." : "Your account was successfully created!"}</span>
-            <a onClick={() => {this.props.handleShowLogin()}}>Already have an account?</a>
+            <a onClick={() => {this.props.showLogin()}}>Already have an account?</a>
             <button onClick={() => this.sendInfo(this.state).then(data => {
               this.props.history.push('/locations');
             })} >Register</button>

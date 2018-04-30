@@ -8,53 +8,54 @@ import Signup from '../header_components/signup.jsx';
 class Modal extends React.Component {
   constructor(props) {
     super(props)
-  
-    this.state = {};
   }
 
   sendLogin(creds) {
-    return axios.post('/api/login', creds)
-      .then(({data}) => {
-        this.props.setUser(data);
-      return data;
-      })
-      
-      .catch((err) => {
-        this.setState({
-          failedLogin: 'Incorrect username or password.'
-        })
-        throw err; 
-      });
+    return axios.post('/api/login', creds);
   }
   
   renderContent (view) {
     if (view === 'login') {
-      return (<Login sendLogin={this.sendLogin} setUser={this.props.setUser} showSignup={this.props.handleModals('signup')} />);
+      return (
+        <Login
+          sendLogin={this.sendLogin}
+          setUser={this.props.setUser}
+          close={this.props.close.bind(this)}
+          showSignup={this.props.toggleView}
+        />
+      );
     }
     if (view === 'signup') {
-      return (<Signup sendLogin={this.sendLogin} setUser={this.props.setUser}/>);
+      return (
+        <Signup
+          sendLogin={this.sendLogin}
+          setUser={this.props.setUser}
+          close={this.props.close.bind(this)}
+          showLogin={this.props.toggleView}
+        />
+      );
     }
   }  
 
   render () {
-    return this.props.modalData.isClosed
+    return !!this.props.modalState.hide
     ? null
-    : 
+    : (
       <div className="modal">
-        <div id="overlay" onClick={this.props.handleModals('closed')}></div>
+        <div id="overlay" onClick={this.props.close}></div>
         <div id="modal">
           <div className="modal-header">
             <div className="modal-title">
-              <h4>{ this.props.modalData.view[0].toUpperCase() + this.props.modalData.view.slice(1) }</h4>
+              <h4>{ this.props.modalState.view[0].toUpperCase() + this.props.modalState.view.slice(1) }</h4>
             </div>
-            <div className="modal-close">
-              <Close onClick={this.props.handleModals('closed')} />
-            </div>
+            <a className="modal-close">
+              <Close onClick={this.props.close} />
+            </a>
           </div>
-          {this.renderContent(this.props.modalData.view)}
+          {this.renderContent(this.props.modalState.view)}
         </div>
       </div>
-    
+    );
   }
 }
 

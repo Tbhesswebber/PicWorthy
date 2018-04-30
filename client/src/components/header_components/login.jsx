@@ -24,19 +24,18 @@ class Login extends Component {
     });
   }
 
-  // sendLogin(creds) {
-  //   axios.post('/api/login', creds)
-  //     .then((data) => {
-  //       window.location.replace(`${window.location.origin}/locations`);
-  //     })
-      
-  //     .catch((err) => {
-  //       this.setState({
-  //         failedLogin: 'Incorrect username or password.'
-  //       })
-  //       throw err; 
-  //     });
-  // }
+  handleClick (e) {
+    this.props.sendLogin(this.state)
+      .then(data => {
+        // this.props.close();
+        this.props.history.push('/locations');
+        return data;
+      })
+      .then(({ data }) => this.props.setUser(data))
+      .catch(err => this.setState({
+        failedLogin: 'Incorrect username or password.'
+      }));
+  }
 
   render() {
     return (
@@ -68,9 +67,7 @@ class Login extends Component {
             {this.state.failedLogin}
           </span>
           <a onClick={this.props.showSignup}>Need an account?</a>
-          <button type="button" onClick={(e) => this.sendLogin(this.state).then(data => {
-            this.props.history.push('/locations');
-          })} >Login</button>
+          <button type="button" onClick={this.handleClick.bind(this)} >Login</button>
         </div>
       </div>
     );

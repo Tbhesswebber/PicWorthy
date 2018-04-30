@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const { NavRightNoUser, NavRightUser } = require('./header_components/nav.jsx');
 
 const Header = (props) => {
-  console.log(props);
   return (
     <div className="header">
       <Link to='/' className="logo">PicWorthy</Link>
@@ -15,7 +14,7 @@ const Header = (props) => {
         : <NavRightNoUser
             setUser={props.setUser}
             modalData={props.modalData}
-            handleModals={props.handleModals}
+            // handleModals={props.handleModals}
           /> }
     </div>
   );
