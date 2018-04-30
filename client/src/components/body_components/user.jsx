@@ -18,6 +18,7 @@ const User = (props) => {
           mainClass="top-two-thirds"
           renderCount={4}
           title="Your Places"
+          viewPhoto={this.props.viewPhoto}
         />
       }
       <div className={`user-map ${photos.length === 0 ? 'full-grid' : 'bottom-third'}`}>

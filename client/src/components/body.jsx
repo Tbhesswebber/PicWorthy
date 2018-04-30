@@ -7,6 +7,7 @@ import Locations from './body_components/locations.jsx';
 import Upload from './body_components/upload.jsx';
 import User from './body_components/user.jsx';
 import Logout from './header_components/logout.jsx';
+import Modal from './helper_components/modal.jsx';
 //* Functions
 import fetchClosestPics from '../helpers/fetchClosestPics.jsx';
 
@@ -19,7 +20,12 @@ class Body extends React.Component {
       zoom: 4,
       position: { lat: 37.09, lng: -95.71 },
       detailedPicURL: 'NONE',
-      userData: props.userData
+      userData: this.props.userData,
+      modalProps: {
+        view: '',
+        hide: true,
+        photoData: ''
+      }
     };
   }
 
@@ -42,9 +48,12 @@ class Body extends React.Component {
       })
   }
 
-  updateDisplayAmount() {
-    const displayAmount = Math.floor((window.innerWidth - 90) / 250);
-    this.setState({ displayAmount });
+  closeModal () {
+    this.setState({modalProps: {view: '', hide: true, photoData: ''}});
+  }
+
+  viewPhoto (pic) {
+    this.setState({modalProps: {view: 'photo', hide: false, photoData: pic}});
   }
 
   //! Check to make sure that this has the proper information in each component
@@ -92,6 +101,17 @@ class Body extends React.Component {
                 userData={this.props.userData}
                 updatePictures={this.updatePictures.bind(this)}
                 setUser={this.props.setUser}
+                viewPhoto={this.viewPhoto.bind(this)}
+              />
+            )}
+          />
+
+          <Route
+            path='/suggestions'
+            render={() => (
+              <Suggestions
+                /* add your props here */
+                viewPhoto={this.viewPhoto.bind(this)}
               />
             )}
           />
@@ -103,11 +123,17 @@ class Body extends React.Component {
                 userData={this.props.userData}
                 updatePictures={this.updatePictures.bind(this)}
                 setUser={this.props.setUser}
+                updatePictures={this.updatePictures}
+                viewPhoto={this.viewPhoto.bind(this)}
               />
             )}
           />
 
         </Switch>
+        <Modal
+          modalState={this.state.modalProps}
+          close={this.closeModal.bind(this)}
+        />
       </div>
     );
   }

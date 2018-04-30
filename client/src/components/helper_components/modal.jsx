@@ -35,6 +35,14 @@ class Modal extends React.Component {
         />
       );
     }
+    if (view === 'photo') {
+      return (
+        <Card 
+          display="show"
+          photo={this.props.modalProps.photoData}
+        />
+      )
+    }
   }  
 
   render () {

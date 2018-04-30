@@ -103,7 +103,7 @@ class Upload extends Component {
       })
 
       .then(() => axios.get('/api/user'))
-      .then((user) => this.props.setUser(user))
+      .then(({data}) => this.props.setUser(data))
       
       .catch((err) => {
         this.setState({

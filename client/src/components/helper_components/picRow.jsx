@@ -22,7 +22,7 @@ const PicRow = (props) => {
           </a>
           <div className="pic-row-images">
             {props.photos.map((photo, index) => 
-              <Card key={index} photo={photo} display={index < props.renderCount ? "show" : "hide"} />
+              <Card key={index} photo={photo} handleClick={() => props.viewPhoto(photo)} display={index < props.renderCount ? "show" : "hide"} />
             )}
           </div>
           <a className="pic-row-chevron-right">

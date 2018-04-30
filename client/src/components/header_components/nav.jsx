@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import {FaStar, FaHome, FaPlus} from 'react-icons/lib/fa';
+import {FaStar, FaHome, FaPlus, FaMapMarker} from 'react-icons/lib/fa';
 
 import Modal from '../helper_components/modal.jsx';
 import Logout from './logout.jsx';
@@ -14,8 +14,11 @@ const NavRightUser = (props) => {
 
   return (
     <div className="user">
-      <Link to='/locations'>
+      <Link to='/suggestions'>
         <FaHome size={ 30 } />
+      </Link>
+      <Link to='/locations'>
+        <FaMapMarker size={ 30 } />
       </Link>
       <Link to='/likes'>
         <FaStar size={ 30 } />

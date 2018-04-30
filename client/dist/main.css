@@ -148,7 +148,7 @@ img {
 
 .user {
   display: grid;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(6, auto);
   grid-column-gap: 1rem; 
 }
 
@@ -185,7 +185,7 @@ img {
   padding:1rem 2rem;
   display: grid;
   grid-template-rows: 1fr 2fr 1fr;
-  grid-template-columns: 1fr 2fr 1 fr;
+  grid-template-columns: 1fr 2fr 1fr;
   grid-template-areas: 
     "tl tm tr"
     "ml mid mr"

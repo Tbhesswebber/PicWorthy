@@ -36,6 +36,7 @@ class Locations extends Component {
         
           { photos.length === 0 ? null :
             <PicRow
+              viewPhoto={this.props.viewPhoto}
               photos={photos}
               mainClass="bottom-third"
               renderCount={4}

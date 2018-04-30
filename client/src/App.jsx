@@ -34,7 +34,6 @@ class App extends Component {
 
   setUser (data) {
     this.setState({userData: data});
-    console.log(this.state);
   }
 
   render() {
