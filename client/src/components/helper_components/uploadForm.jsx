@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Close from 'react-icons/lib/fa/close';
 // import TagInput from './tagInput.jsx';
 
 export default class UploadForm extends Component {
@@ -14,7 +15,7 @@ export default class UploadForm extends Component {
   }
   
   render() {
-    const uploadStatus = this.props.uploadStatus.map((status, key) => <span key={key}>{status}</span>);
+    const uploadStatus = this.props.uploadStatus.map((status) => <div>{status}</div>);
     return (
       
       <form className="upload fullh fullw" onSubmit={this.props.handleSubmit}>
@@ -62,16 +63,24 @@ export default class UploadForm extends Component {
               <label>
                 Tags
               </label> 
-              <textarea
-                name="tags"
+              <input
+                name="tagsInput"
                 type="text"
-                placeholder="Add tags spaced by commas"
-                value={this.props.tags}
+                placeholder="Add tags"
+                value={this.props.tagsInput}
                 onChange={this.props.handleInputChange} 
+                onKeyPress={e => this.props.handleKeyPress(e)}
               />
             </div>
 
           <div className="form-footer">
+            <div>
+            {
+              this.props.tags.map((tag, key) => {
+                return ( <span key={key}>{tag}<a onClick={e => this.props.handleDelete(tag)}><Close /></a></span> )
+              })
+            }
+            </div><br/>
             <input
               name="submit"
               type="submit" 

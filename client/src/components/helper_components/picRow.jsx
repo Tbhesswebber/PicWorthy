@@ -7,6 +7,7 @@ import Card from './card.jsx';
 
 const PicRow = (props) => {
   const photos = props.photos.slice(0);
+  console.log(photos);
   return (
       <div className={`pic-row ${props.mainClass}`}>
         {/* <div className="pic-row-title">

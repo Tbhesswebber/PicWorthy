@@ -80,6 +80,7 @@ class Body extends React.Component {
             render={() => (
               <Upload
                 userData={this.props.userData}
+                setUser={this.props.setUser}
               />
             )}
           />
@@ -89,6 +90,8 @@ class Body extends React.Component {
             render={() => (
               <User 
                 userData={this.props.userData}
+                updatePictures={this.updatePictures.bind(this)}
+                setUser={this.props.setUser}
               />
             )}
           />
@@ -99,6 +102,7 @@ class Body extends React.Component {
               <Locations
                 userData={this.props.userData}
                 updatePictures={this.updatePictures.bind(this)}
+                setUser={this.props.setUser}
               />
             )}
           />

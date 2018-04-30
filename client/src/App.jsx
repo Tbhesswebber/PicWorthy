@@ -49,6 +49,7 @@ class App extends Component {
         />
         <Body
           userData={ this.state.userData }
+          setUser={this.setUser.bind(this)}
         />
         <Footer />
       </div>

@@ -22,7 +22,7 @@ export default class Suggestions extends React.Component {
       <div>
       <h1>Suggestions!</h1>
         {this.state.suggestions.map(suggestion => 
-          ( <div>{suggestion.location}</div> )
+          ( <div>{suggestion.location} </div> )
         )}
       </div>
     )
