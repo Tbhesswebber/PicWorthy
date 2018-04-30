@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Login from '../header_components/login.jsx';
 import Signup from '../header_components/signup.jsx';
+import Card from './card.jsx';
 
 class Modal extends React.Component {
   constructor(props) {

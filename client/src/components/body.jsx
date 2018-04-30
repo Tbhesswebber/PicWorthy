@@ -24,20 +24,25 @@ class Body extends React.Component {
       modalProps: {
         view: '',
         hide: true,
-        photoData: ''
+        photoData: {
+          description: '',
+          imageURL: '',
+          location: '',
+          username: ''
+        }
       }
     };
   }
 
   updatePictures(lat, lng) {
     fetchClosestPics(lat, lng)
-      .then(({ data }) => {
-        const clickHandler = this.showHideDetails;
+    .then(({ data }) => {
+      const clickHandler = this.viewPhoto.bind(this, data);
 
         const markers = data.map((pic) => ({
           lat: pic.loc.coordinates[1],
           lng: pic.loc.coordinates[0],
-          clickHandler: (e) => clickHandler(e, pic.imageURL)
+          clickHandler: (e) => clickHandler(pic)
         })
         );
 
@@ -49,7 +54,8 @@ class Body extends React.Component {
   }
 
   closeModal () {
-    this.setState({modalProps: {view: '', hide: true, photoData: ''}});
+    console.log('Modal closed');
+    this.setState({modalProps: {view: '', hide: true}});
   }
 
   viewPhoto (pic) {

@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Card = (props) => (
-  <div className={`card ${props.display}`}>
-    <div className="card-content">
-        <img 
-          src={ props.photo.imageURL }
-        />
+  <a onClick={props.handleClick}>
+    <div className={`card ${props.display}`}>
+      <div className="card-content">
+          <img 
+            src={ props.photo.imageURL }
+          />
+      </div>
     </div>
-  </div>
+  </a>
 )
 
 /*
