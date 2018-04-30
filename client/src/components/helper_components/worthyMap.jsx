@@ -213,7 +213,8 @@ const WorthyMap = compose(
             fontSize: `14px`,
             outline: `none`,
             textOverflow: `ellipses`,
-            left: '500px'
+            left: '500px',
+            backgroundColor: 'white'
           }}
         />
       </SearchBox>

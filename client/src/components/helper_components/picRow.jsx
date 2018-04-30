@@ -6,9 +6,9 @@ import Card from './card.jsx';
 
 
 const PicRow = (props) => {
+  const photos = props.photos.slice(0);
   return (
-    <div className="bottom-third fullw" >
-      <div className="pic-row">
+      <div className={`pic-row ${props.mainClass}`}>
         <div className="pic-row-title">
           <h1>{props.title}</h1>
         </div>
@@ -16,22 +16,30 @@ const PicRow = (props) => {
           <a className="pic-row-chevron-left chevron chevron-left">
             <FaChevronLeft
               className="left-chevron"
-              onClick={() => this.advanceImage(this.state.images)}              
+              onClick={() => this.advanceImage(props.photos)}              
             />
           </a>
           <div className="pic-row-images">
-            <Card photo={props.photos[0]} />
+            {props.photos.map((photo, index) => 
+              <Card key={index} photo={photo} display={index < props.renderCount ? "show" : "hide"} />
+            )}
           </div>
           <a className="pic-row-chevron-right chevron chevron-right">
               <FaChevronRight
                 className="right-chevron"
-                onClick={() => this.retreatImage(this.state.images)}
+                onClick={() => this.retreatImage(props.photos)}
               />
           </a>
         </div>
       </div>
-    </div>
   );
 }
+
+PicRow.propTypes = {
+  mainClass: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  photos: PropTypes.array.isRequired,
+  renderCount: PropTypes.number.isRequired
+};
 
 export default PicRow;

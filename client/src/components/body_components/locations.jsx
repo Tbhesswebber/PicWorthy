@@ -49,22 +49,14 @@ class Locations extends Component {
         
         </div>
         
-        {/* <div>
-          Around You
-        </div> */}
-        
           { photos.length === 0 ? null :
             <PicRow
+              photos={photos}
+              mainClass="bottom-third"
+              renderCount={4}
               title="Around You"
-              rowType="locations"
-              photos={ photos }
-              detailedPicURL={ this.state.detailedPicURL }
             />
           }
-        
-        {/* <div>
-          <Details />
-        </div> */}
       </div>
     );
   }

@@ -8,22 +8,30 @@ const User = (props) => {
     
   const photos = props.userData.photos.slice(0);
 
+  const markers = photos.reduce((acc, photo) => acc.splice(-1, 0, photo.latLng), []);
+
   return (
-    <div className="user fullh fullw" >
-      
-      <h1>Hello {props.userData.firstName}</h1>
-      <h2>Your Places</h2>
-      
+    <div className="user fullh fullw body-content-equal-thirds" >
+      <div className="user-pic-row top-two-thirds">
       { photos.length === 0 ? null :
         <PicRow 
-          // showHideDetails={ props.showHideDetails }
-          photos={ photos }
-          detailedPicURL={ props.detailedPicURL }
+          photos={photos}
+          mainClass="top-two-thirds"
+          renderCount={4}
+          title="Your Places"
         />
       }
-    
+      </div>
+      <div className={`user-map ${photos.length === 0 ? 'full-grid' : 'bottom-third'}`}>
+        <WorthyMap
+          markers={markers}
+          clickMap={() => {}}
+          defaultZoom={10}
+          defaultCenter={ {lat: 1, lng: 1} }
+        />
+      </div>
     </div>
-  )
+  );
 }
 
 export default User;
