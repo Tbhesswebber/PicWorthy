@@ -14,7 +14,7 @@ export default class UploadForm extends Component {
   }
   
   render() {
-    const uploadStatus = this.props.uploadStatus.map((status) => <div>{status}</div>);
+    const uploadStatus = this.props.uploadStatus.map((status, key) => <span key={key}>{status}</span>);
     return (
       
       <form className="upload fullh fullw" onSubmit={this.props.handleSubmit}>
